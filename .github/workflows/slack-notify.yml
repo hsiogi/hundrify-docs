@@ -4,7 +4,7 @@ on:
   push:
     branches:
       - release
-      - logs/**
+      - logs
 
 jobs:
   notify-slack:
@@ -16,7 +16,7 @@ jobs:
           echo "SLACK_MESSAGE={\"text\":\":spiral_note_pad: *Roadmap 文件更新*已推送\n請參考 <https://github.com/${{ github.repository }}/blob/main/Hundrify-Roadmap.md>\"}" >> $GITHUB_ENV
 
       - name: Set Slack message for logs
-        if: startsWith(github.ref, 'refs/heads/logs/')
+        if: startsWith(github.ref, 'refs/heads/logs')
         run: |
           echo "SLACK_MESSAGE={\"text\":\":bookmark_tabs: *產品版本文件更新*已推送\n請參考 <https://github.com/${{ github.repository }}/blob/main/%E7%94%A2%E5%93%81%E4%B8%8A%E6%9E%B6%E7%B4%80%E9%8C%84.md>\"}" >> $GITHUB_ENV
 
